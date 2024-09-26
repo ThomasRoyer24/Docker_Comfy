@@ -1,0 +1,35 @@
+x-base_service: &base_service
+    ports:
+      - "${WEBUI_PORT:-7860}:7860"
+      - "${WEBUI_PORT:-5000}:5000"
+    volumes:
+      - &v1 ./data:/data
+      - &v2 ./output:/output
+    stop_signal: SIGKILL
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+              - driver: nvidia
+                device_ids: ['0']
+                capabilities: [compute, utility]
+
+name: webui-docker
+
+services:
+  download:
+    build: ./services/download/
+    profiles: ["download"]
+    volumes:
+      - *v1
+
+  comfy: &comfy
+    <<: *base_service
+    profiles: ["comfy"]
+    build: ./
+    image: sd-comfy:7
+    environment:
+      - CLI_ARGS=
+
+
