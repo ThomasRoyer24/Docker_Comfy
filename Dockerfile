@@ -32,21 +32,23 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 RUN apt update && apt install -y wget
 
 
-# download models
+# Download models
 WORKDIR ${ROOT}/models
-COPY download_models.sh download_models.sh
-#RUN chmod +x download_models.sh && ./download_models.sh
+COPY scripts_setup/download_models.sh download_models.sh
+RUN chmod +x download_models.sh
+#RUN ./download_models.sh
+
 
 # Install requirement for python code
 WORKDIR ${ROOT}
 RUN mkdir "python_code"
 
-#copy model for test
+# Copy model to save time on local computer
 COPY scripts_setup/model_deplacement.sh model_deplacement.sh
 RUN chmod +x model_depacement.sh
 
 # Script to setup the comfy environment
-COPY start_setup.sh start_setup.sh
+COPY scripts_setup/start_setup.sh start_setup.sh
 
 
 # Install requirement for python code 
@@ -54,10 +56,12 @@ WORKDIR ${ROOT}/python_code
 COPY scripts_setup/requirements.txt requirements.txt 
 RUN python3.10 -m pip install -r requirements.txt
 
+# Clone the workflow repository
+RUN git clone https://github.com/ThomasRoyer24/Generate_video_comfyui.git
 
-# download custom nodes
+# Download custom nodes
 WORKDIR ${ROOT}/custom_nodes
-COPY custom_nodes.txt ${ROOT}/custom_nodes/custom_nodes.txt
+COPY scripts_setup/custom_nodes.txt custom_nodes.txt
 RUN while read repo; do git clone "$repo"; done < custom_nodes.txt
 
 
