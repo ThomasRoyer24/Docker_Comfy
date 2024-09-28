@@ -5,6 +5,9 @@
 # Checkpoint
 #wget -O checkpoints/darksun_v41.safetensors "https://civitai.com/api/download/models/130121?type=Model&format=SafeTensor&size=full&fp=fp32"
 wget -O checkpoints/Counterfeit-V3.0_fp16.safetensors https://huggingface.co/gsdf/Counterfeit-V3.0/resolve/main/Counterfeit-V3.0_fp16.safetensors
+wget -O checkpoints/DreamShaperXL_Lightning.safetensors https://huggingface.co/Lykon/dreamshaper-xl-lightning/resolve/main/DreamShaperXL_Lightning.safetensors
+
+
 # Clip vision
 wget -O clip_vision/clip-vit-large-patch14.safetensors https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors
 
