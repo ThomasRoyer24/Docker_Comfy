@@ -49,6 +49,7 @@ RUN mkdir "python_code"
 # Copy model to save time on local computer
 COPY scripts_setup/model_deplacement.sh model_deplacement.sh
 RUN chmod +x model_deplacement.sh
+RUN dos2unix model_deplacement.sh
 
 # Script to setup the comfy environment
 COPY scripts_setup/start_setup.sh start_setup.sh
