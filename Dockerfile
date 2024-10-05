@@ -31,11 +31,14 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 RUN apt update && apt install -y wget
 
+# Install dos2unix to fix sh file bug
+RUN apt install dos2unix
 
 # Download models
 WORKDIR ${ROOT}/models
 COPY scripts_setup/download_models.sh download_models.sh
 RUN chmod +x download_models.sh
+RUN dos2unix download_models.sh
 #RUN ./download_models.sh
 
 
@@ -45,11 +48,12 @@ RUN mkdir "python_code"
 
 # Copy model to save time on local computer
 COPY scripts_setup/model_deplacement.sh model_deplacement.sh
-RUN chmod +x model_depacement.sh
+RUN chmod +x model_deplacement.sh
 
 # Script to setup the comfy environment
 COPY scripts_setup/start_setup.sh start_setup.sh
-
+# Fix the start_setup.sh file bug that i don't have time to fix
+RUN dos2unix start_setup.sh
 
 # Install requirement for python code 
 WORKDIR ${ROOT}/python_code
@@ -67,6 +71,7 @@ RUN while read repo; do git clone "$repo"; done < custom_nodes.txt
 
 WORKDIR ${ROOT}
 COPY . /docker/
+
 
 ENV NVIDIA_VISIBLE_DEVICES=all PYTHONPATH="${PYTHONPATH}:${PWD}" CLI_ARGS=""
 EXPOSE 7860
