@@ -5,3 +5,13 @@ https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes
 https://github.com/BadCafeCode/masquerade-nodes-comfyui.git
 https://github.com/Fannovel16/comfyui_controlnet_aux
 https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet
+https://github.com/akatz-ai/ComfyUI-Depthflow-Nodes.git
+https://github.com/BrokenSource/DepthFlow.git
+https://github.com/ryanontheinside/ComfyUI_RyanOnTheInside.git
+https://github.com/kijai/ComfyUI-DepthAnythingV2.git
+https://github.com/spacepxl/ComfyUI-Image-Filters.git
+https://github.com/jamesWalker55/comfyui-various.git
+https://github.com/theUpsider/ComfyUI-Logic.git
+https://github.com/evanspearman/ComfyMath.git
+https://github.com/kijai/ComfyUI-KJNodes.git
+https://github.com/M1kep/ComfyLiterals.git
