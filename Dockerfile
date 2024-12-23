@@ -61,9 +61,6 @@ WORKDIR ${ROOT}/python_code
 COPY scripts_setup/requirements.txt requirements.txt 
 RUN python3.10 -m pip install -r requirements.txt
 
-# Clone the workflow repository
-RUN git clone https://github.com/ThomasRoyer24/Generate_video_comfyui.git
-
 # Download custom nodes
 WORKDIR ${ROOT}/custom_nodes
 COPY scripts_setup/custom_nodes.txt custom_nodes.txt
