@@ -56,11 +56,6 @@ COPY scripts_setup/start_setup.sh start_setup.sh
 # Fix the start_setup.sh file bug that i don't have time to fix
 RUN dos2unix start_setup.sh
 
-# Install requirement for python code 
-WORKDIR ${ROOT}/python_code
-COPY scripts_setup/requirements.txt requirements.txt 
-RUN python3.10 -m pip install -r requirements.txt
-
 # Download custom nodes
 WORKDIR ${ROOT}/custom_nodes
 COPY scripts_setup/custom_nodes.txt custom_nodes.txt
