@@ -1,4 +1,4 @@
-python3.10 -u main.py --listen --port 7860 &
+python3.10 -u main.py --listen --port 7860 & 
 
 PID_COMFY=$!
 echo "ComfyUI démarré avec PID: $PID_COMFY"
@@ -14,4 +14,4 @@ python3.10 custom_nodes/ComfyUI-Manager/cm-cli.py fix all
 kill $PID_COMFY
 echo "ComfyUI (PID: $PID_COMFY) a été arrêté"
 
-python3.10 -u main.py --listen --port 7860 &
+python3.10 -u main.py --listen --port 7860 --output-directory ../output &
