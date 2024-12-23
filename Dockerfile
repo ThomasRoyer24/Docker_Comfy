@@ -19,7 +19,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py && \
     python3.10 get-pip.py && \
     rm get-pip.py
 
-ENV ROOT=/stable-diffusion
+ENV ROOT=/Comfyui
 
 RUN --mount=type=cache,target=/root/.cache/pip \
   git clone https://github.com/comfyanonymous/ComfyUI.git ${ROOT} && \
@@ -76,7 +76,6 @@ COPY . /docker/
 
 ENV NVIDIA_VISIBLE_DEVICES=all PYTHONPATH="${PYTHONPATH}:${PWD}" CLI_ARGS=""
 EXPOSE 7860
-EXPOSE 5000
 
 CMD ["/bin/bash"]
 
