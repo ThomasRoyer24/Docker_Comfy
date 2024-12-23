@@ -15,3 +15,5 @@ https://github.com/theUpsider/ComfyUI-Logic.git
 https://github.com/evanspearman/ComfyMath.git
 https://github.com/kijai/ComfyUI-KJNodes.git
 https://github.com/M1kep/ComfyLiterals.git
+https://github.com/THUDM/CogVideo
+https://github.com/if-ai/ComfyUI-IF_LLM
