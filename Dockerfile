@@ -53,6 +53,7 @@ RUN dos2unix model_deplacement.sh
 
 # Script to setup the comfy environment
 COPY scripts_setup/start_setup.sh start_setup.sh
+RUN chmod +x start_setup.sh
 # Fix the start_setup.sh file bug that i don't have time to fix
 RUN dos2unix start_setup.sh
 
