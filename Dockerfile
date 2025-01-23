@@ -8,7 +8,8 @@ RUN apt-get update && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y python3.10 python3.10-dev python3.10-distutils && \
-    apt-get clean
+    apt-get clean && \
+    apt-get install -y libgl1
 
 # Mettre à jour les alternatives pour que python pointe vers python3.10
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 && \
@@ -25,9 +26,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
   git clone https://github.com/comfyanonymous/ComfyUI.git ${ROOT} && \
   cd ${ROOT} && \
   git checkout master && \
-  git reset --hard 276f8fce9f5a80b500947fb5745a4dde9e84622d && \
+  #git reset --hard put-commit-version && \
   python3.10 -m pip install -r requirements.txt
-
 
 RUN apt update && apt install -y wget
 
@@ -57,7 +57,7 @@ RUN chmod +x start_setup.sh
 # Fix the start_setup.sh file bug that i don't have time to fix
 RUN dos2unix start_setup.sh
 
-# Download custom nodes
+# # Download custom nodes
 WORKDIR ${ROOT}/custom_nodes
 COPY scripts_setup/custom_nodes.txt custom_nodes.txt
 RUN while read repo; do git clone "$repo"; done < custom_nodes.txt
